@@ -1,0 +1,77 @@
+{
+  "name": "@whitetrefoil/to-local-iso-string",
+  "version": "0.1.0",
+  "description": "Date.prototype.toISOString without force UTC timezone.",
+  "main": "lib/common/main.js",
+  "module": "lib/esm/main.js",
+  "typings": "lib/types/main.d.ts",
+  "scripts": {
+    "prepublishOnly": "node scripts/prepublish-checklist.js && npm run build",
+    "build": "rimraf lib && tsc && tsc -p tsconfig.common.json",
+    "publish": "echo \"Done publishing, don't forget to:\n  1. **dist-tag** your channel in npm.\n  2. bump version in package.json\nGood luck with the publish ;)\"",
+    "test": "tslint . && jest --no-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whitetrefoil/to-local-iso-string.git"
+  },
+  "author": "WhiteTrefoil <whitetrefoil@gmail.com>",
+  "license": "Unlicense",
+  "files": [
+    "lib/**/*.js",
+    "lib/types/**/*.d.ts",
+    "README.md"
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "engines": {
+    "node": ">=8.11.1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.0.6",
+    "jest": "^22.4.3",
+    "moment": "^2.22.1",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.5",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,js}",
+      "!**/*.d.ts"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/~.*"
+    ],
+    "coverageDirectory": "test_results",
+    "coverageReporters": [
+      "clover",
+      "lcov",
+      "text-summary"
+    ],
+    "globals": {
+      "ts-jest": {
+        "skipBabel": false
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {},
+    "setupFiles": [],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$",
+    "transform": {
+      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    }
+  }
+}
